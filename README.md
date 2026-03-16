@@ -10,25 +10,27 @@ To develop a Recurrent Neural Network (RNN) model for predicting stock prices us
 ## DESIGN STEPS
 ### STEP 1: 
 
-Write your own steps
+Load and normalize data, create sequences.
 
 ### STEP 2: 
 
-
+Convert data to tensors and set up DataLoader.
 
 ### STEP 3: 
 
-
+Define the RNN model architecture.
 
 ### STEP 4: 
 
-
+Summarize, compile with loss and optimizer.
 
 ### STEP 5: 
 
-
+Train the model with loss tracking.
 
 ### STEP 6: 
+
+Predict on test data, plot actual vs. predicted prices.
 
 
 
@@ -36,9 +38,9 @@ Write your own steps
 
 ## PROGRAM
 
-### Name:
+### Name: Mohammad Suhael
 
-### Register Number:
+### Register Number: 212224230164
 
 ```python
 import numpy as np
@@ -187,4 +189,5 @@ print(f'Actual Price: {actual_prices[-1]}')
 <img width="317" height="66" alt="image" src="https://github.com/user-attachments/assets/7b4db9a4-d54d-4f22-b04f-a574d143ecda" />
 
 ## RESULT
-Include your result here
+Thus, a Recurrent Neural Network (RNN) model for predicting stock prices using historical closing price data has been developed successfully.
+
