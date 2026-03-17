@@ -43,53 +43,6 @@ Predict on test data, plot actual vs. predicted prices.
 ### Register Number: 212224230164
 
 ```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import MinMaxScaler
-import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader, TensorDataset
-## Step 1: Load and Preprocess Data
-# Load training and test datasets
-df_train = pd.read_csv('trainset.csv')
-df_test = pd.read_csv('testset.csv')
-
-# Use closing prices
-train_prices = df_train['Close'].values.reshape(-1, 1)
-test_prices = df_test['Close'].values.reshape(-1, 1)
-
-# Normalize the data based on training set only
-scaler = MinMaxScaler()
-scaled_train = scaler.fit_transform(train_prices)
-scaled_test = scaler.transform(test_prices)
-
-# Create sequences
-def create_sequences(data, seq_length):
-    x = []
-    y = []
-    for i in range(len(data) - seq_length):
-        x.append(data[i:i+seq_length])
-        y.append(data[i+seq_length])
-    return np.array(x), np.array(y)
-
-seq_length = 60
-x_train, y_train = create_sequences(scaled_train, seq_length)
-x_test, y_test = create_sequences(scaled_test, seq_length)
-
-x_train.shape, y_train.shape, x_test.shape, y_test.shape
-
-# Convert to PyTorch tensors
-x_train_tensor = torch.tensor(x_train, dtype=torch.float32)
-y_train_tensor = torch.tensor(y_train, dtype=torch.float32)
-x_test_tensor = torch.tensor(x_test, dtype=torch.float32)
-y_test_tensor = torch.tensor(y_test, dtype=torch.float32)
-
-
-# Create dataset and dataloader
-train_dataset = TensorDataset(x_train_tensor, y_train_tensor)
-train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
-
 ## Step 2: Define RNN Model
 class RNNModel(nn.Module):
     def __init__(self, input_size=1, hidden_size=64, num_layers=2, output_size=1):
